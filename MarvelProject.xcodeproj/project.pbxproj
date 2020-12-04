@@ -13,6 +13,12 @@
 		1F391152257A51D7002C686B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F391150257A51D7002C686B /* Main.storyboard */; };
 		1F391154257A51D7002C686B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F391153257A51D7002C686B /* Assets.xcassets */; };
 		1F391157257A51D7002C686B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F391155257A51D7002C686B /* LaunchScreen.storyboard */; };
+		1F391160257A53FD002C686B /* Сharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39115F257A53FD002C686B /* Сharacters.swift */; };
+		1F39116A257A55D5002C686B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391169257A55D5002C686B /* TableViewController.swift */; };
+		1F391170257A5675002C686B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39116F257A5675002C686B /* DetailViewController.swift */; };
+		1F391173257A5753002C686B /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391172257A5753002C686B /* RequestManager.swift */; };
+		1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391175257A5F8A002C686B /* ExtensionForView.swift */; };
+		1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391178257A6AF9002C686B /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +29,13 @@
 		1F391151257A51D7002C686B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F391153257A51D7002C686B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F391156257A51D7002C686B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1F391158257A51D7002C686B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F391158257A51D7002C686B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MarvelProject/Support file/Info.plist"; sourceTree = SOURCE_ROOT; };
+		1F39115F257A53FD002C686B /* Сharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сharacters.swift"; sourceTree = "<group>"; };
+		1F391169257A55D5002C686B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		1F39116F257A5675002C686B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1F391172257A5753002C686B /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		1F391175257A5F8A002C686B /* ExtensionForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForView.swift; sourceTree = "<group>"; };
+		1F391178257A6AF9002C686B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,69 @@
 		1F391149257A51D7002C686B /* MarvelProject */ = {
 			isa = PBXGroup;
 			children = (
-				1F39114A257A51D7002C686B /* AppDelegate.swift */,
-				1F39114C257A51D7002C686B /* SceneDelegate.swift */,
-				1F39114E257A51D7002C686B /* ViewController.swift */,
-				1F391150257A51D7002C686B /* Main.storyboard */,
-				1F391153257A51D7002C686B /* Assets.xcassets */,
-				1F391155257A51D7002C686B /* LaunchScreen.storyboard */,
-				1F391158257A51D7002C686B /* Info.plist */,
+				1F391168257A554C002C686B /* Extensions */,
+				1F391163257A5477002C686B /* Model */,
+				1F391164257A5484002C686B /* View */,
+				1F391165257A548F002C686B /* Controller */,
+				1F391166257A54CE002C686B /* Support file */,
 			);
 			path = MarvelProject;
+			sourceTree = "<group>";
+		};
+		1F391163257A5477002C686B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F39115F257A53FD002C686B /* Сharacters.swift */,
+				1F391172257A5753002C686B /* RequestManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F391164257A5484002C686B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F391155257A51D7002C686B /* LaunchScreen.storyboard */,
+				1F391150257A51D7002C686B /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F391165257A548F002C686B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F39114E257A51D7002C686B /* ViewController.swift */,
+				1F391169257A55D5002C686B /* TableViewController.swift */,
+				1F39116D257A55F4002C686B /* Cell */,
+				1F39116F257A5675002C686B /* DetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F391166257A54CE002C686B /* Support file */ = {
+			isa = PBXGroup;
+			children = (
+				1F39114A257A51D7002C686B /* AppDelegate.swift */,
+				1F39114C257A51D7002C686B /* SceneDelegate.swift */,
+				1F391153257A51D7002C686B /* Assets.xcassets */,
+				1F391158257A51D7002C686B /* Info.plist */,
+			);
+			path = "Support file";
+			sourceTree = "<group>";
+		};
+		1F391168257A554C002C686B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F391175257A5F8A002C686B /* ExtensionForView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F39116D257A55F4002C686B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1F391178257A6AF9002C686B /* CustomTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +203,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */,
+				1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */,
 				1F39114F257A51D7002C686B /* ViewController.swift in Sources */,
+				1F391160257A53FD002C686B /* Сharacters.swift in Sources */,
 				1F39114B257A51D7002C686B /* AppDelegate.swift in Sources */,
+				1F391170257A5675002C686B /* DetailViewController.swift in Sources */,
+				1F391173257A5753002C686B /* RequestManager.swift in Sources */,
+				1F39116A257A55D5002C686B /* TableViewController.swift in Sources */,
 				1F39114D257A51D7002C686B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HXGYHST7SN;
-				INFOPLIST_FILE = MarvelProject/Info.plist;
+				INFOPLIST_FILE = "MarvelProject/Support file/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +379,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HXGYHST7SN;
-				INFOPLIST_FILE = MarvelProject/Info.plist;
+				INFOPLIST_FILE = "MarvelProject/Support file/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
