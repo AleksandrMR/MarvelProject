@@ -19,6 +19,7 @@
 		1F391173257A5753002C686B /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391172257A5753002C686B /* RequestManager.swift */; };
 		1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391175257A5F8A002C686B /* ExtensionForView.swift */; };
 		1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391178257A6AF9002C686B /* CustomTableViewCell.swift */; };
+		1F39117C257A7C12002C686B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39117B257A7C12002C686B /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1F391172257A5753002C686B /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		1F391175257A5F8A002C686B /* ExtensionForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForView.swift; sourceTree = "<group>"; };
 		1F391178257A6AF9002C686B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		1F39117B257A7C12002C686B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				1F39115F257A53FD002C686B /* Сharacters.swift */,
 				1F391172257A5753002C686B /* RequestManager.swift */,
+				1F39117B257A7C12002C686B /* DataProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F39117C257A7C12002C686B /* DataProvider.swift in Sources */,
 				1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */,
 				1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */,
 				1F39114F257A51D7002C686B /* ViewController.swift in Sources */,
@@ -361,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HXGYHST7SN;
 				INFOPLIST_FILE = "MarvelProject/Support file/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HXGYHST7SN;
 				INFOPLIST_FILE = "MarvelProject/Support file/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

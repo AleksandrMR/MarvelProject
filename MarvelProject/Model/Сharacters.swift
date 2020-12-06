@@ -7,98 +7,110 @@
 
 import Foundation
 
-// MARK: - Сharacters
-struct Сharacters: Codable {
-    let code: Int
-    let status, copyright, attributionText, attributionHTML: String
-    let etag: String
-    let data: DataClass
+// MARK: - CharacterDataWrapper
+struct CharacterDataWrapper: Codable {
+    var code: Int?
+    var status, copyright, attributionText, attributionHTML: String?
+    var etag: String?
+    var data: CharacterDataContainer?
 }
 
-// MARK: - DataClass
-struct DataClass: Codable {
-    let offset, limit, total, count: Int
-    let results: [Result]
+// MARK: - CharacterDataContainer
+struct CharacterDataContainer: Codable {
+    var offset, limit, total, count: Int?
+    var results: [Character]?
 }
 
-// MARK: - Result
-struct Result: Codable {
-    let id: Int
-    let name, resultDescription: String
-    let modified: Date
-    let thumbnail: Thumbnail
-    let resourceURI: String
-    let comics, series: Comics
-    let stories: Stories
-    let events: Comics
-    let urls: [URLElement]
-
+// MARK: - Character
+struct Character: Codable {
+    var id: Int?
+    var name, description: String?
+    var modified: String?
+    var thumbnail: Image?
+    var resourceURI: String?
+    var comics: ComicList?
+    var series: SeriesList?
+    var stories: StoryList?
+    var events: EventList?
+    var urls: [Url]?
+    
     enum CodingKeys: String, CodingKey {
         case id, name
-        case resultDescription = "description"
+        case description = "description"
         case modified, thumbnail, resourceURI, comics, series, stories, events, urls
     }
 }
 
-// MARK: - Comics
-struct Comics: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [ComicsItem]
-    let returned: Int
-}
-
-// MARK: - ComicsItem
-struct ComicsItem: Codable {
-    let resourceURI: String
-    let name: String
-}
-
-// MARK: - Stories
-struct Stories: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [StoriesItem]
-    let returned: Int
-}
-
-// MARK: - StoriesItem
-struct StoriesItem: Codable {
-    let resourceURI: String
-    let name: String
-    let type: ItemType
-}
-
-enum ItemType: String, Codable {
-    case cover = "cover"
-    case empty = ""
-    case interiorStory = "interiorStory"
-}
-
-// MARK: - Thumbnail
-struct Thumbnail: Codable {
-    let path: String
-    let thumbnailExtension: Extension
-
+// MARK: - Image
+struct Image: Codable {
+    var path: String?
+    var thumbnailExtension: String?
+    
     enum CodingKeys: String, CodingKey {
         case path
         case thumbnailExtension = "extension"
     }
 }
 
-enum Extension: String, Codable {
-    case gif = "gif"
-    case jpg = "jpg"
+// MARK: - ComicList
+struct ComicList: Codable {
+    var available: Int?
+    var collectionURI: String?
+    var items: [ComicSummary]?
+    var returned: Int?
 }
 
-// MARK: - URLElement
-struct URLElement: Codable {
-    let type: URLType
-    let url: String
+// MARK: - ComicSummary
+struct ComicSummary: Codable {
+    var resourceURI: String?
+    var name: String?
 }
 
-enum URLType: String, Codable {
-    case comiclink = "comiclink"
-    case detail = "detail"
-    case wiki = "wiki"
+// MARK: - SeriesList
+struct SeriesList: Codable {
+    var available: Int?
+    var collectionURI: String?
+    var items: [SeriesSummary]?
+    var returned: Int?
+}
+
+// MARK: - SeriesSummary
+struct SeriesSummary: Codable {
+    var resourceURI: String?
+    var name: String?
+}
+
+// MARK: - StoryList
+struct StoryList: Codable {
+    var available: Int?
+    var returned: Int?
+    var collectionURI: String?
+    var items: [StorySummary]?
+}
+
+// MARK: - StorySummary
+struct StorySummary: Codable {
+    var resourceURI: String?
+    var name: String?
+    var type: String?
+}
+
+// MARK: - EventList
+struct EventList: Codable {
+    var available: Int?
+    var collectionURI: String?
+    var items: [EventSummary]?
+    var returned: Int?
+}
+
+// MARK: - EventSummary
+struct EventSummary: Codable {
+    var resourceURI: String?
+    var name: String?
+}
+
+// MARK: - Url
+struct Url: Codable {
+    var type: String?
+    var url: String?
 }

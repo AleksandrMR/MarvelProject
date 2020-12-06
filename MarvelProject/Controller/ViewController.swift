@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CryptoKit
 
 class ViewController: UIViewController {
-
+    
     
     //    MARK: - outlets
     
@@ -27,22 +28,37 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         self.setupCornerRadius()
-//        self.setupShadow()
+        //        self.setupShadow()
         
     }
     //    MARK: - IBActions
     
     @IBAction func tabelViewButtonPressed(_ sender: UIButton) {
-        guard let controller = self.storyboard?.instantiateViewController(identifier: "TableViewController") as? TableViewController else { return }
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.goToTableViewControlle()
     }
     
     @IBAction func collectionViewButtonPressed(_ sender: UIButton) {
+        self.goToCollectionViewController()
     }
     
     //    MARK: - flow funcs
+    
+    func goToCollectionViewController() {
+        
+    }
+    
+    func goToTableViewControlle() {
+        
+        RequestManager.shared.sendRequest { [weak self] characters in
+            DispatchQueue.main.async {
+                guard let controller = self?.storyboard?.instantiateViewController(identifier: "TableViewController") as? TableViewController else { return }
+                controller.characterArray = characters?.data?.results ?? []
+                self?.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
     
     func setupCornerRadius() {
         self.tabelViewButton.layer.cornerRadius = myCornerRadius
@@ -53,10 +69,4 @@ class ViewController: UIViewController {
         self.tabelViewButton.myShadowOne()
         self.collectionViewButton.myShadowOne()
     }
-    
-    
-    
-    
-    
-    
 }

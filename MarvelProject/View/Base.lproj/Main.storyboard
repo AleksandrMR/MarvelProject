@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K4t-Qj-rzG">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1200px-MarvelLogo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="oVN-pz-xSA">
-                                <rect key="frame" x="40" y="91" width="240" height="128"/>
+                                <rect key="frame" x="40" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oVN-pz-xSA" secondAttribute="height" multiplier="15:8" id="SfS-HZ-Wlv"/>
                                     <constraint firstAttribute="height" constant="128" id="tM5-RA-1Gn"/>
@@ -30,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="44" id="FZi-Q9-cvr"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="244" id="Ken-4P-eaD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="TabelView">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -45,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="44" id="3EF-qU-ngM"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="244" id="n0e-9V-cO9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="CollectionView">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -66,6 +67,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Es7-pc-y4J"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionViewButton" destination="e3L-Dw-4Ho" id="uUJ-tQ-OKS"/>
                         <outlet property="tabelViewButton" destination="QaF-58-m09" id="h2E-Yx-pZy"/>
@@ -84,31 +86,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92675787210000005" green="0.11564137789999999" blue="0.141114831" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="150" id="wpO-fy-ZU9" customClass="CustomTableViewCell" customModule="MarvelProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" id="wpO-fy-ZU9" customClass="CustomTableViewCell" customModule="MarvelProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wpO-fy-ZU9" id="sD4-q2-qQf">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oEs-YQ-fxH">
-                                            <rect key="frame" x="16" y="11" width="128" height="128"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oEs-YQ-fxH">
+                                            <rect key="frame" x="16" y="11" width="114" height="114"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="oEs-YQ-fxH" secondAttribute="height" multiplier="1:1" id="Wvv-61-WbY"/>
                                                 <constraint firstAttribute="height" constant="128" id="vEc-GG-IlT"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPw-2R-hZh">
-                                            <rect key="frame" x="152" y="11" width="152" height="128"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPw-2R-hZh">
+                                            <rect key="frame" x="138" y="11" width="134" height="114"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="WPw-2R-hZh" secondAttribute="height" multiplier="19:16" id="F3c-zo-gdb"/>
                                                 <constraint firstAttribute="height" constant="128" id="HcS-Ha-dio"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="oEs-YQ-fxH" firstAttribute="top" secondItem="sD4-q2-qQf" secondAttribute="topMargin" id="FKC-RO-RQ6"/>
                                         <constraint firstItem="oEs-YQ-fxH" firstAttribute="leading" secondItem="sD4-q2-qQf" secondAttribute="leadingMargin" id="UZz-U4-Hbw"/>
@@ -116,7 +119,7 @@
                                         <constraint firstItem="WPw-2R-hZh" firstAttribute="bottom" secondItem="sD4-q2-qQf" secondAttribute="bottomMargin" id="nJs-q7-0Om"/>
                                         <constraint firstItem="WPw-2R-hZh" firstAttribute="top" secondItem="sD4-q2-qQf" secondAttribute="topMargin" id="rjL-Tx-v2w"/>
                                         <constraint firstItem="WPw-2R-hZh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oEs-YQ-fxH" secondAttribute="trailing" constant="8" symbolic="YES" id="xGv-QY-hlR"/>
-                                        <constraint firstItem="WPw-2R-hZh" firstAttribute="trailing" secondItem="sD4-q2-qQf" secondAttribute="trailingMargin" id="zdB-PS-VDG"/>
+                                        <constraint firstItem="WPw-2R-hZh" firstAttribute="trailing" secondItem="sD4-q2-qQf" secondAttribute="trailingMargin" constant="-32" id="zdB-PS-VDG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
