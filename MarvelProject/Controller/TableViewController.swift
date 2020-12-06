@@ -13,28 +13,44 @@ class TableViewController: UITableViewController {
     //    MARK: - let
     
     let heightForRowAt = CGFloat(150)
+    let searchController = UISearchController(searchResultsController: nil)
     
     //    MARK: - var
     
     var characterArray = [Character]()
+    var filteredArray = [Character]()
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     //    MARK: - lifecycle funcs
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setup thr SearchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         self.title = "Marvel Characters"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(filterAlphabeticallyButtonPressed))
         
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     //    MARK: - IBActions
     
     @IBAction func filterAlphabeticallyButtonPressed(_ sender: UIButton) {
@@ -48,6 +64,10 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isFiltering {
+            return filteredArray.count
+        }
         return characterArray.count
     }
     
@@ -55,7 +75,12 @@ class TableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell else {
             return UITableViewCell()
         }
-        cell.cellConfig(with: characterArray[indexPath.row])
+        
+        if isFiltering {
+            cell.cellConfig(with: filteredArray[indexPath.row])
+        } else {
+            cell.cellConfig(with: characterArray[indexPath.row])
+        }
         return cell
     }
     
@@ -85,3 +110,20 @@ class TableViewController: UITableViewController {
         }
     }
 }
+
+extension TableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        
+        filteredArray = characterArray.filter({ (character: Character) -> Bool in
+            return (character.name?.lowercased().contains(searchText.lowercased()) ?? false)
+        })
+        self.tableView.reloadData()
+    }
+    
+}
+
