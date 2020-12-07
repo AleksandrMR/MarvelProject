@@ -26,7 +26,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     //    MARK: - flow funcs
     
     func cellConfig(with characters: Character?) {
+        
         self.myLabel.text = characters?.name
+        self.myImageView.layer.cornerRadius = self.imageCornerRadius
+        self.myLabel.layer.cornerRadius = self.imageCornerRadius
         
         if let path = characters?.thumbnail?.path, let thumbnailExtension = characters?.thumbnail?.thumbnailExtension {
             
@@ -38,7 +41,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             guard let url = URL(string: urlString) else { return }
             DataProvider.shared.downLoadImage(url: url) { image in
                 self.myImageView.image = image
-                self.myImageView.layer.cornerRadius = self.imageCornerRadius
             }
         }
     }

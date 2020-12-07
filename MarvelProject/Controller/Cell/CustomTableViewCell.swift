@@ -26,10 +26,11 @@ class CustomTableViewCell: UITableViewCell {
     //    MARK: - flow funcs
     
     func cellConfig(with characters: Character?) {
+        
         self.customCellLabel.text = characters?.name
+        self.customCellImageView.layer.cornerRadius = self.imageCornerRadius
         
         if let path = characters?.thumbnail?.path, let thumbnailExtension = characters?.thumbnail?.thumbnailExtension {
-            
             if urlImageNotFound == path {
                 urlString = "\(urlString)"
             } else {
@@ -38,7 +39,6 @@ class CustomTableViewCell: UITableViewCell {
             guard let url = URL(string: urlString) else { return }
             DataProvider.shared.downLoadImage(url: url) { image in
                 self.customCellImageView.image = image
-                self.customCellImageView.layer.cornerRadius = self.imageCornerRadius
             }
         }
     }
