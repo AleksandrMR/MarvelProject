@@ -15,18 +15,15 @@ class RequestManager {
     private init() {}
     
     //    MARK: - let
-    
     let baseURL = "http://gateway.marvel.com/v1/public/characters?"
     let ts = NSDate().timeIntervalSince1970.description
     let privateKey = "dbff2432764f6a2679da62736e5ac68c5bec8b82"
     let publicKey = "ca3e130ba6cd59ddeef0a7db3013884a"
    
     //    MARK: - var
-    
     var offsetIndex = 0
     
     //    MARK: - flow funcs
-    
     func sendRequest(completion: @escaping (CharacterDataWrapper?) -> ()) {
         
         let hashMD5 = "\(ts)\(privateKey)\(publicKey)"

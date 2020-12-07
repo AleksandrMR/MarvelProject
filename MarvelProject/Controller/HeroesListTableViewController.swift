@@ -7,16 +7,13 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
-    
+class HeroesListTableViewController: UITableViewController {
     
     //    MARK: - let
-    
     let heightForRowAt = CGFloat(150)
     let searchController = UISearchController(searchResultsController: nil)
     
     //    MARK: - var
-    
     var characterArray = [Character]()
     var filteredArray = [Character]()
     private var searchBarIsEmpty: Bool {
@@ -29,7 +26,6 @@ class TableViewController: UITableViewController {
     }
     
     //    MARK: - lifecycle funcs
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,8 +37,7 @@ class TableViewController: UITableViewController {
         definesPresentationContext = true
         
         self.title = "Marvel Characters"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(filterAlphabeticallyButtonPressed))
-        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(filterAlphabeticallyButtonPressed))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,15 +45,17 @@ class TableViewController: UITableViewController {
         
         tableView.reloadData()
     }
-    
     //    MARK: - IBActions
-    
     @IBAction func filterAlphabeticallyButtonPressed(_ sender: UIButton) {
-        
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected == false {
+            filterContentAscending()
+        }
+        if sender.isSelected == true {
+            filterContentDescending()
+        }
     }
-    
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -110,10 +107,28 @@ class TableViewController: UITableViewController {
             }
         }
     }
+    
+    private func filterContentAscending() {
+        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+            let chracter = character.name
+            let characterFiltered = characterFiltered.name
+            return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedAscending)
+        })
+       tableView.reloadData()
+    }
+    
+    private func filterContentDescending() {
+        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+            let chracter = character.name
+            let characterFiltered = characterFiltered.name
+            return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedDescending)
+        })
+        tableView.reloadData()
+    }
+    
 }
-//MARK: - extensions
-
-extension TableViewController: UISearchResultsUpdating {
+//MARK: - extensione
+extension HeroesListTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         self.filterContentForSearchText(searchController.searchBar.text!)

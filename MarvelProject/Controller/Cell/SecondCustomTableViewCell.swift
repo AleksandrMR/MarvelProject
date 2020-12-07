@@ -10,22 +10,18 @@ import UIKit
 class SecondCustomTableViewCell: UITableViewCell {
 
     //    MARK: - outlets
-    
     @IBOutlet weak var secondCustomCellImageView: UIImageView!
     @IBOutlet weak var secondCustomCellLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
     //    MARK: - let
-    
     let imageCornerRadius = CGFloat(13)
     
     //    MARK: - var
-    
     var urlString = "http://mobile.aws.skylabs.it/mobileassignments/marvel/placeholder.png"
     var urlImageNotFound = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     
     //    MARK: - flow funcs
-    
     func cellConfig(with comicsName: ComicSummary?) {
         
         self.secondCustomCellLabel.text = comicsName?.name
@@ -43,7 +39,4 @@ class SecondCustomTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    
-    
 }

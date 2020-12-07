@@ -10,20 +10,17 @@ import UIKit
 class DetailViewController: UIViewController {
     
     //    MARK: - outlets
-    
     @IBOutlet weak var viewOfImageView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var comicsView: UIView!
     
     //    MARK: - var
-    
     var detail: Character?
     var urlString = "http://mobile.aws.skylabs.it/mobileassignments/marvel/placeholder.png"
     var urlImageNotFound = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     
     //    MARK: - lifecycle funcs
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,9 +34,7 @@ class DetailViewController: UIViewController {
             self.updateInterfaceWith(details: detail)
         }
     }
-    
     //    MARK: - IBActions
-    
     @IBAction func switchSegmentedControl(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0 {
@@ -50,9 +45,7 @@ class DetailViewController: UIViewController {
             comicsView.alpha = 1
         }
     }
-    
     //    MARK: - flow funcs
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if case segue.identifier = "DescriptionViewController" {
             guard let destination = segue.destination as? DescriptionViewController else { return }

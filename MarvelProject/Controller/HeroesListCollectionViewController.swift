@@ -9,16 +9,14 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HeroesListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     //    MARK: - let
-    
     let itemsPerRow: CGFloat = 2
     let sectionInserts = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let searchController = UISearchController(searchResultsController: nil)
     
     //    MARK: - var
-    
     var characterArray = [Character]()
     var filteredArray = [Character]()
     private var searchBarIsEmpty: Bool {
@@ -31,7 +29,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     //    MARK: - lifecycle funcs
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,10 +41,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         self.title = "Marvel Characters"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(filterAlphabeticallyButtonPressed))
-        
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,15 +48,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         collectionView.reloadData()
     }
-    
     //    MARK: - outlets
-    
     @IBAction func filterAlphabeticallyButtonPressed(_ sender: UIButton) {
         
     }
     
     // MARK: - UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -130,10 +120,27 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             }
         }
     }
+    
+    private func filterContentAscending() {
+        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+            let chracter = character.name
+            let characterFiltered = characterFiltered.name
+            return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedAscending)
+        })
+        collectionView.reloadData()
+    }
+    
+    private func filterContentDescending() {
+        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+            let chracter = character.name
+            let characterFiltered = characterFiltered.name
+            return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedDescending)
+        })
+        collectionView.reloadData()
+    }
 }
 //MARK: - extensions
-
-extension CollectionViewController: UISearchResultsUpdating {
+extension HeroesListCollectionViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         self.filterContentForSearchText(searchController.searchBar.text!)

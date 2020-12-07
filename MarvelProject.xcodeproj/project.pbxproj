@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		1F39114B257A51D7002C686B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39114A257A51D7002C686B /* AppDelegate.swift */; };
 		1F39114D257A51D7002C686B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39114C257A51D7002C686B /* SceneDelegate.swift */; };
-		1F39114F257A51D7002C686B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39114E257A51D7002C686B /* ViewController.swift */; };
+		1F39114F257A51D7002C686B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39114E257A51D7002C686B /* HomeViewController.swift */; };
 		1F391152257A51D7002C686B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F391150257A51D7002C686B /* Main.storyboard */; };
 		1F391154257A51D7002C686B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F391153257A51D7002C686B /* Assets.xcassets */; };
 		1F391157257A51D7002C686B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F391155257A51D7002C686B /* LaunchScreen.storyboard */; };
 		1F391160257A53FD002C686B /* Сharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39115F257A53FD002C686B /* Сharacters.swift */; };
-		1F39116A257A55D5002C686B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391169257A55D5002C686B /* TableViewController.swift */; };
+		1F39116A257A55D5002C686B /* HeroesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391169257A55D5002C686B /* HeroesListTableViewController.swift */; };
 		1F391170257A5675002C686B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39116F257A5675002C686B /* DetailViewController.swift */; };
 		1F391173257A5753002C686B /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391172257A5753002C686B /* RequestManager.swift */; };
-		1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391175257A5F8A002C686B /* ExtensionForView.swift */; };
+		1F391176257A5F8A002C686B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391175257A5F8A002C686B /* UIViewExtension.swift */; };
 		1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F391178257A6AF9002C686B /* CustomTableViewCell.swift */; };
 		1F39117C257A7C12002C686B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39117B257A7C12002C686B /* DataProvider.swift */; };
 		1FCAB6EB257D0A74005534C1 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6EA257D0A74005534C1 /* ComicsViewController.swift */; };
 		1FCAB6EE257D0A96005534C1 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6ED257D0A96005534C1 /* DescriptionViewController.swift */; };
 		1FCAB6F2257D0C47005534C1 /* SecondCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F1257D0C47005534C1 /* SecondCustomTableViewCell.swift */; };
-		1FCAB6F5257D77ED005534C1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */; };
+		1FCAB6F5257D77ED005534C1 /* HeroesListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F4257D77ED005534C1 /* HeroesListCollectionViewController.swift */; };
 		1FCAB6F8257D7841005534C1 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F7257D7841005534C1 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,22 +31,22 @@
 		1F391147257A51D7002C686B /* MarvelProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F39114A257A51D7002C686B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F39114C257A51D7002C686B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1F39114E257A51D7002C686B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F39114E257A51D7002C686B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F391151257A51D7002C686B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F391153257A51D7002C686B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F391156257A51D7002C686B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F391158257A51D7002C686B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MarvelProject/Support file/Info.plist"; sourceTree = SOURCE_ROOT; };
 		1F39115F257A53FD002C686B /* Сharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сharacters.swift"; sourceTree = "<group>"; };
-		1F391169257A55D5002C686B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		1F391169257A55D5002C686B /* HeroesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListTableViewController.swift; sourceTree = "<group>"; };
 		1F39116F257A5675002C686B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1F391172257A5753002C686B /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		1F391175257A5F8A002C686B /* ExtensionForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForView.swift; sourceTree = "<group>"; };
+		1F391175257A5F8A002C686B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		1F391178257A6AF9002C686B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		1F39117B257A7C12002C686B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		1FCAB6EA257D0A74005534C1 /* ComicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
 		1FCAB6ED257D0A96005534C1 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		1FCAB6F1257D0C47005534C1 /* SecondCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomTableViewCell.swift; sourceTree = "<group>"; };
-		1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1FCAB6F4257D77ED005534C1 /* HeroesListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListCollectionViewController.swift; sourceTree = "<group>"; };
 		1FCAB6F7257D7841005534C1 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,9 +111,9 @@
 		1F391165257A548F002C686B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F39114E257A51D7002C686B /* ViewController.swift */,
-				1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */,
-				1F391169257A55D5002C686B /* TableViewController.swift */,
+				1F39114E257A51D7002C686B /* HomeViewController.swift */,
+				1FCAB6F4257D77ED005534C1 /* HeroesListCollectionViewController.swift */,
+				1F391169257A55D5002C686B /* HeroesListTableViewController.swift */,
 				1F39116D257A55F4002C686B /* Cell */,
 				1F39116F257A5675002C686B /* DetailViewController.swift */,
 				1FCAB6ED257D0A96005534C1 /* DescriptionViewController.swift */,
@@ -136,7 +136,7 @@
 		1F391168257A554C002C686B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1F391175257A5F8A002C686B /* ExtensionForView.swift */,
+				1F391175257A5F8A002C686B /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,16 +225,16 @@
 				1FCAB6F8257D7841005534C1 /* CustomCollectionViewCell.swift in Sources */,
 				1F39117C257A7C12002C686B /* DataProvider.swift in Sources */,
 				1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */,
-				1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */,
-				1FCAB6F5257D77ED005534C1 /* CollectionViewController.swift in Sources */,
+				1F391176257A5F8A002C686B /* UIViewExtension.swift in Sources */,
+				1FCAB6F5257D77ED005534C1 /* HeroesListCollectionViewController.swift in Sources */,
 				1FCAB6EB257D0A74005534C1 /* ComicsViewController.swift in Sources */,
-				1F39114F257A51D7002C686B /* ViewController.swift in Sources */,
+				1F39114F257A51D7002C686B /* HomeViewController.swift in Sources */,
 				1F391160257A53FD002C686B /* Сharacters.swift in Sources */,
 				1F39114B257A51D7002C686B /* AppDelegate.swift in Sources */,
 				1F391170257A5675002C686B /* DetailViewController.swift in Sources */,
 				1F391173257A5753002C686B /* RequestManager.swift in Sources */,
 				1FCAB6EE257D0A96005534C1 /* DescriptionViewController.swift in Sources */,
-				1F39116A257A55D5002C686B /* TableViewController.swift in Sources */,
+				1F39116A257A55D5002C686B /* HeroesListTableViewController.swift in Sources */,
 				1F39114D257A51D7002C686B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

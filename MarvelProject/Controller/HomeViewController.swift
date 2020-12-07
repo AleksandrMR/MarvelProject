@@ -8,44 +8,38 @@
 import UIKit
 import CryptoKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     //    MARK: - outlets
-    
     @IBOutlet weak var tabelViewButton: UIButton!
     @IBOutlet weak var collectionViewButton: UIButton!
     @IBOutlet weak var labelConstraint: NSLayoutConstraint!
     @IBOutlet weak var nameAppLabel: UIImageView!
     
     //    MARK: - let
-    
     let myCornerRadius = CGFloat(13)
     
     //    MARK: - lifecycle funcs
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupCornerRadius()
     }
     //    MARK: - IBActions
-    
     @IBAction func tabelViewButtonPressed(_ sender: UIButton) {
         self.goToTableViewControlle()
-        self.animationConstraint()
     }
     
     @IBAction func collectionViewButtonPressed(_ sender: UIButton) {
         self.goToCollectionViewController()
-        self.animationConstraint()
     }
     
     //    MARK: - flow funcs
-    
     func goToCollectionViewController() {
+        self.animationConstraint()
         RequestManager.shared.sendRequest { [weak self] characters in
             DispatchQueue.main.async {
-                guard let controller = self?.storyboard?.instantiateViewController(identifier: "CollectionViewController") as? CollectionViewController else { return }
+                guard let controller = self?.storyboard?.instantiateViewController(identifier: "CollectionViewController") as? HeroesListCollectionViewController else { return }
                 controller.characterArray = characters?.data?.results ?? []
                 self?.navigationController?.pushViewController(controller, animated: true)
             }
@@ -53,9 +47,10 @@ class ViewController: UIViewController {
     }
     
     func goToTableViewControlle() {
+        self.animationConstraint()
         RequestManager.shared.sendRequest { [weak self] characters in
             DispatchQueue.main.async {
-                guard let controller = self?.storyboard?.instantiateViewController(identifier: "TableViewController") as? TableViewController else { return }
+                guard let controller = self?.storyboard?.instantiateViewController(identifier: "TableViewController") as? HeroesListTableViewController else { return }
                 controller.characterArray = characters?.data?.results ?? []
                 self?.navigationController?.pushViewController(controller, animated: true)
             }
@@ -63,7 +58,6 @@ class ViewController: UIViewController {
     }
     
     func animationConstraint() {
-//        self.labelConstraint.constant += 1200
         UIView.animate(withDuration: 2, animations: {
             self.view.backgroundColor = .white
             self.nameAppLabel.alpha = 0
@@ -71,7 +65,6 @@ class ViewController: UIViewController {
             self.collectionViewButton.alpha = 0
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-//            self.labelConstraint.constant -= 1200
             UIView.animate(withDuration: 2) {
                 self.view.backgroundColor = .black
                 self.nameAppLabel.alpha = 1

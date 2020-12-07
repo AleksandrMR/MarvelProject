@@ -13,29 +13,19 @@ class ComicsViewController: UIViewController {
     @IBOutlet weak var myTabelView: UITableView!
     
     //    MARK: - let
-    
     let heightForRowAt = CGFloat(100)
     
     //    MARK: - var
-    
     var characterComics: Character?
     
     //    MARK: - lifecycle funcs
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.myTabelView.reloadData()
     }
 }
-//MARK: - extensions
-
+//MARK: - extensione
 extension ComicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

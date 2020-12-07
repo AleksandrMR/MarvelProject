@@ -9,16 +9,14 @@ import UIKit
 
 class DescriptionViewController: UIViewController {
     
+    //    MARK: - outlets
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    //    MARK: - var
     var characterDescription: Character?
     var noDescription = "We offer our apologies. Unfortunately, this character has no description, we hope that in the near future it will appear."
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+    //    MARK: - lifecycle funcs
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

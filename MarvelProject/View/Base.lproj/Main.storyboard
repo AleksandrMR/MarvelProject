@@ -4,16 +4,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="1046.25" y="105.63380281690141"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Heroes List Collection View Controller-->
         <scene sceneID="Rk3-cj-Pxl">
             <objects>
-                <collectionViewController storyboardIdentifier="CollectionViewController" id="t3k-Y6-UWp" customClass="CollectionViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="CollectionViewController" id="t3k-Y6-UWp" customClass="HeroesListCollectionViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e94-fj-oz0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,17 +143,44 @@
             </objects>
             <point key="canvasLocation" x="1884.375" y="-583.09859154929575"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Heroes List Table View Controller-->
         <scene sceneID="EQe-sM-CVH">
             <objects>
-                <tableViewController storyboardIdentifier="TableViewController" id="JDG-mw-lkn" customClass="TableViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableViewController" id="JDG-mw-lkn" customClass="HeroesListTableViewController" customModule="MarvelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Dz-k6-KMi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="4Nv-qv-3CB">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="de8-4y-SWw">
+                                    <rect key="frame" x="268" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="ee6-Mu-Q8O"/>
+                                        <constraint firstAttribute="width" secondItem="de8-4y-SWw" secondAttribute="height" multiplier="1:1" id="yAK-yN-vy5"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="large"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="filterAlphabeticallyButtonPressed:" destination="JDG-mw-lkn" eventType="touchUpInside" id="kMe-JR-l7j"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="de8-4y-SWw" firstAttribute="top" secondItem="4Nv-qv-3CB" secondAttribute="top" id="Lx2-Do-idQ"/>
+                                <constraint firstAttribute="bottom" secondItem="de8-4y-SWw" secondAttribute="bottom" id="Osd-Ic-gSP"/>
+                                <constraint firstAttribute="trailing" secondItem="de8-4y-SWw" secondAttribute="trailing" constant="8" id="pVA-BW-g52"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" id="wpO-fy-ZU9" customClass="CustomTableViewCell" customModule="MarvelProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="136"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wpO-fy-ZU9" id="sD4-q2-qQf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
@@ -453,6 +481,7 @@
     </scenes>
     <resources>
         <image name="1200px-MarvelLogo.svg" width="600" height="241"/>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

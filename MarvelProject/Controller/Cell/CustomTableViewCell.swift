@@ -10,21 +10,17 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     
     //    MARK: - outlets
-    
     @IBOutlet weak var customCellImageView: UIImageView!
     @IBOutlet weak var customCellLabel: UILabel!
     
     //    MARK: - let
-    
     let imageCornerRadius = CGFloat(13)
     
     //    MARK: - var
-    
     var urlString = "http://mobile.aws.skylabs.it/mobileassignments/marvel/placeholder.png"
     var urlImageNotFound = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     
     //    MARK: - flow funcs
-    
     func cellConfig(with characters: Character?) {
         
         self.customCellLabel.text = characters?.name
