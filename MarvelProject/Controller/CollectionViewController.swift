@@ -1,18 +1,20 @@
 //
-//  TableViewController.swift
+//  CollectionViewController.swift
 //  MarvelProject
 //
-//  Created by Aleksandr Milashevski on 04/12/20.
+//  Created by Aleksandr Milashevski on 06/12/20.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController {
-    
-    
+private let reuseIdentifier = "Cell"
+
+class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+
     //    MARK: - let
     
-    let heightForRowAt = CGFloat(150)
+    let itemsPerRow: CGFloat = 2
+    let sectionInserts = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let searchController = UISearchController(searchResultsController: nil)
     
     //    MARK: - var
@@ -32,7 +34,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // setup thr SearchController
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -43,56 +45,74 @@ class TableViewController: UITableViewController {
         self.title = "Marvel Characters"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(filterAlphabeticallyButtonPressed))
         
+        // Register cell classes
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
-    //    MARK: - IBActions
+    //    MARK: - outlets
     
     @IBAction func filterAlphabeticallyButtonPressed(_ sender: UIButton) {
         
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    // MARK: - UICollectionViewDataSource
+
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if isFiltering {
             return filteredArray.count
         }
         return characterArray.count
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell else {
-            return UITableViewCell()
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell else { return UICollectionViewCell()
+            
         }
-        
         if isFiltering {
             cell.cellConfig(with: filteredArray[indexPath.row])
         } else {
             cell.cellConfig(with: characterArray[indexPath.row])
         }
+    
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return heightForRowAt
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
         controller.detail = characterArray[indexPath.row]
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInserts
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -105,7 +125,7 @@ class TableViewController: UITableViewController {
             RequestManager.shared.sendRequest { [weak self] characters in
                 self?.characterArray.append(contentsOf: characters?.data?.results ?? [])
                 DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+                    self?.collectionView.reloadData()
                 }
             }
         }
@@ -113,7 +133,7 @@ class TableViewController: UITableViewController {
 }
 //MARK: - extensions
 
-extension TableViewController: UISearchResultsUpdating {
+extension CollectionViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         self.filterContentForSearchText(searchController.searchBar.text!)
@@ -124,7 +144,7 @@ extension TableViewController: UISearchResultsUpdating {
         filteredArray = characterArray.filter({ (character: Character) -> Bool in
             return (character.name?.lowercased().contains(searchText.lowercased()) ?? false)
         })
-        self.tableView.reloadData()
+        self.collectionView.reloadData()
     }
     
 }

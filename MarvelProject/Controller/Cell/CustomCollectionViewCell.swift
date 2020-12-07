@@ -1,5 +1,5 @@
 //
-//  SecondCustomTableViewCell.swift
+//  CustomCollectionViewCell.swift
 //  MarvelProject
 //
 //  Created by Aleksandr Milashevski on 06/12/20.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class SecondCustomTableViewCell: UITableViewCell {
-
+class CustomCollectionViewCell: UICollectionViewCell {
+    
     //    MARK: - outlets
     
-    @IBOutlet weak var secondCustomCellImageView: UIImageView!
-    @IBOutlet weak var secondCustomCellLabel: UILabel!
+    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var myLabel: UILabel!
     
     //    MARK: - let
     
@@ -25,24 +25,22 @@ class SecondCustomTableViewCell: UITableViewCell {
     
     //    MARK: - flow funcs
     
-    func cellConfig(with comicsName: ComicSummary?) {
-        self.secondCustomCellLabel.text = comicsName?.name
+    func cellConfig(with characters: Character?) {
+        self.myLabel.text = characters?.name
         
-        if let path = comicsName?.resourceURI {
+        if let path = characters?.thumbnail?.path, let thumbnailExtension = characters?.thumbnail?.thumbnailExtension {
             
             if urlImageNotFound == path {
                 urlString = "\(urlString)"
             } else {
-                urlString = "\(path)"
+                urlString = "\(path).\(thumbnailExtension)"
             }
             guard let url = URL(string: urlString) else { return }
             DataProvider.shared.downLoadImage(url: url) { image in
-                self.secondCustomCellImageView.image = image
-                self.secondCustomCellImageView.layer.cornerRadius = self.imageCornerRadius
+                self.myImageView.image = image
+                self.myImageView.layer.cornerRadius = self.imageCornerRadius
             }
         }
     }
-    
-    
     
 }

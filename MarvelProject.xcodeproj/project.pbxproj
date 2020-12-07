@@ -23,6 +23,8 @@
 		1FCAB6EB257D0A74005534C1 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6EA257D0A74005534C1 /* ComicsViewController.swift */; };
 		1FCAB6EE257D0A96005534C1 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6ED257D0A96005534C1 /* DescriptionViewController.swift */; };
 		1FCAB6F2257D0C47005534C1 /* SecondCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F1257D0C47005534C1 /* SecondCustomTableViewCell.swift */; };
+		1FCAB6F5257D77ED005534C1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */; };
+		1FCAB6F8257D7841005534C1 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB6F7257D7841005534C1 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		1FCAB6EA257D0A74005534C1 /* ComicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
 		1FCAB6ED257D0A96005534C1 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		1FCAB6F1257D0C47005534C1 /* SecondCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomTableViewCell.swift; sourceTree = "<group>"; };
+		1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1FCAB6F7257D7841005534C1 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1F39114E257A51D7002C686B /* ViewController.swift */,
+				1FCAB6F4257D77ED005534C1 /* CollectionViewController.swift */,
 				1F391169257A55D5002C686B /* TableViewController.swift */,
 				1F39116D257A55F4002C686B /* Cell */,
 				1F39116F257A5675002C686B /* DetailViewController.swift */,
@@ -139,6 +144,7 @@
 		1F39116D257A55F4002C686B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1FCAB6F7257D7841005534C1 /* CustomCollectionViewCell.swift */,
 				1F391178257A6AF9002C686B /* CustomTableViewCell.swift */,
 				1FCAB6F1257D0C47005534C1 /* SecondCustomTableViewCell.swift */,
 			);
@@ -216,9 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FCAB6F2257D0C47005534C1 /* SecondCustomTableViewCell.swift in Sources */,
+				1FCAB6F8257D7841005534C1 /* CustomCollectionViewCell.swift in Sources */,
 				1F39117C257A7C12002C686B /* DataProvider.swift in Sources */,
 				1F391179257A6AF9002C686B /* CustomTableViewCell.swift in Sources */,
 				1F391176257A5F8A002C686B /* ExtensionForView.swift in Sources */,
+				1FCAB6F5257D77ED005534C1 /* CollectionViewController.swift in Sources */,
 				1FCAB6EB257D0A74005534C1 /* ComicsViewController.swift in Sources */,
 				1F39114F257A51D7002C686B /* ViewController.swift in Sources */,
 				1F391160257A53FD002C686B /* Сharacters.swift in Sources */,

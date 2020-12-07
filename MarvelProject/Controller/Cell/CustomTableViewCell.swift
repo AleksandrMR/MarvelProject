@@ -14,6 +14,10 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var customCellImageView: UIImageView!
     @IBOutlet weak var customCellLabel: UILabel!
     
+    //    MARK: - let
+    
+    let imageCornerRadius = CGFloat(13)
+    
     //    MARK: - var
     
     var urlString = "http://mobile.aws.skylabs.it/mobileassignments/marvel/placeholder.png"
@@ -34,6 +38,7 @@ class CustomTableViewCell: UITableViewCell {
             guard let url = URL(string: urlString) else { return }
             DataProvider.shared.downLoadImage(url: url) { image in
                 self.customCellImageView.image = image
+                self.customCellImageView.layer.cornerRadius = self.imageCornerRadius
             }
         }
     }
