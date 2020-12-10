@@ -17,7 +17,6 @@ class ComicsViewController: UIViewController {
     
     //    MARK: - var
     var characterComics = [ComicsResult?]()
-    var comicsPrice = [Price?]()
     
     //    MARK: - lifecycle funcs
     override func viewWillAppear(_ animated: Bool) {

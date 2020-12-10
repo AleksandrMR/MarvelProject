@@ -24,7 +24,7 @@ class SecondCustomTableViewCell: UITableViewCell {
     //    MARK: - flow funcs
     func cellConfig(with comicsResalt: ComicsResult?) {
         self.secondCustomCellLabel.text = comicsResalt?.title
-//        self.priceLabel.text = "Price: \(String(describing: price?.price)) $"
+        self.priceLabel.text = "Price: \(comicsResalt?.prices?.first?.price ?? 0.0) $"
         self.secondCustomCellImageView.layer.cornerRadius = self.imageCornerRadius
         if let path = comicsResalt?.thumbnail?.path, let thumbnailExtension = comicsResalt?.thumbnail?.thumbnailExtension {
             if urlImageNotFound == path {

@@ -61,7 +61,6 @@ class DetailViewController: UIViewController {
                 DispatchQueue.main.async {
                     guard let destination = segue.destination as? ComicsViewController else { return }
                     destination.characterComics = comicsResults?.data?.results ?? []
-//                    destination.comicsPrice = comicsResults?.data?.results?
                     destination.myTabelView.reloadData()
                 }
             }
