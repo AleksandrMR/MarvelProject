@@ -22,13 +22,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     //    MARK: - flow funcs
     func cellConfig(with characters: Character?) {
-        
         self.myLabel.text = characters?.name
         self.myImageView.layer.cornerRadius = self.imageCornerRadius
         self.myLabel.layer.cornerRadius = self.imageCornerRadius
-        
         if let path = characters?.thumbnail?.path, let thumbnailExtension = characters?.thumbnail?.thumbnailExtension {
-            
             if urlImageNotFound == path {
                 urlString = "\(urlString)"
             } else {

@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var comicsView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     //    MARK: - var
     var detail: Character?
@@ -23,7 +24,7 @@ class DetailViewController: UIViewController {
     //    MARK: - lifecycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+               
         self.viewOfImageView.myShadow()
     }
     
@@ -35,8 +36,12 @@ class DetailViewController: UIViewController {
         }
     }
     //    MARK: - IBActions
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func switchSegmentedControl(_ sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 0 {
             descriptionView.alpha = 1
             comicsView.alpha = 0
@@ -52,16 +57,20 @@ class DetailViewController: UIViewController {
             destination.characterDescription = detail
         }
         if case segue.identifier = "ComicsViewController" {
-            guard let destination = segue.destination as? ComicsViewController else { return }
-            destination.characterComics = detail
+            RequestManager.shared.sendSecondRequest(id: detail?.id ?? 0) { comicsResults in
+                DispatchQueue.main.async {
+                    guard let destination = segue.destination as? ComicsViewController else { return }
+                    destination.characterComics = comicsResults?.data?.results ?? []
+//                    destination.comicsPrice = comicsResults?.data?.results?
+                    destination.myTabelView.reloadData()
+                }
+            }
         }
     }
     
     func updateInterfaceWith(details: Character?) {
-        
-        title = details?.name
+        self.nameLabel.text = details?.name
         if let path = details?.thumbnail?.path, let thumbnailExtension = details?.thumbnail?.thumbnailExtension {
-            
             if urlImageNotFound == path {
                 urlString = "\(urlString)"
             } else {

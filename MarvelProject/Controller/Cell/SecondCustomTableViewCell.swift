@@ -22,16 +22,15 @@ class SecondCustomTableViewCell: UITableViewCell {
     var urlImageNotFound = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     
     //    MARK: - flow funcs
-    func cellConfig(with comicsName: ComicSummary?) {
-        
-        self.secondCustomCellLabel.text = comicsName?.name
+    func cellConfig(with comicsResalt: ComicsResult?) {
+        self.secondCustomCellLabel.text = comicsResalt?.title
+//        self.priceLabel.text = "Price: \(String(describing: price?.price)) $"
         self.secondCustomCellImageView.layer.cornerRadius = self.imageCornerRadius
-        
-        if let path = comicsName?.resourceURI {
+        if let path = comicsResalt?.thumbnail?.path, let thumbnailExtension = comicsResalt?.thumbnail?.thumbnailExtension {
             if urlImageNotFound == path {
                 urlString = "\(urlString)"
             } else {
-                urlString = "\(path)"
+                urlString = "\(path).\(thumbnailExtension)"
             }
             guard let url = URL(string: urlString) else { return }
             DataProvider.shared.downLoadImage(url: url) { image in

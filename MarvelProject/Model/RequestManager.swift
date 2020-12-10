@@ -11,11 +11,11 @@ import CryptoKit
 class RequestManager {
     
     static let shared = RequestManager()
-    
     private init() {}
     
     //    MARK: - let
     let baseURL = "http://gateway.marvel.com/v1/public/characters?"
+    let secondBaseURL = "http://gateway.marvel.com/v1/public/characters/"
     let ts = NSDate().timeIntervalSince1970.description
     let privateKey = "dbff2432764f6a2679da62736e5ac68c5bec8b82"
     let publicKey = "ca3e130ba6cd59ddeef0a7db3013884a"
@@ -25,16 +25,34 @@ class RequestManager {
     
     //    MARK: - flow funcs
     func sendRequest(completion: @escaping (CharacterDataWrapper?) -> ()) {
-        
         let hashMD5 = "\(ts)\(privateKey)\(publicKey)"
         let hashCode = self.MD5(string: hashMD5)
-        
         guard let url = URL(string: "\(baseURL)ts=\(ts)&apikey=\(publicKey)&hash=\(hashCode)&offset=\(offsetIndex)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { (data, request, error) in
             if let data = data, error == nil {
                 if let dataFromRequest = try? JSONDecoder().decode(CharacterDataWrapper.self, from: data) {
+                    completion(dataFromRequest)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func sendSecondRequest(id: Int,completion: @escaping (Comics?) -> ()) {
+        let characterId = id
+        let secondPathURL = "\(characterId)/comics?"
+        let hashMD5 = "\(ts)\(privateKey)\(publicKey)"
+        let hashCode = self.MD5(string: hashMD5)
+        guard let url = URL(string: "\(secondBaseURL)\(secondPathURL)ts=\(ts)&apikey=\(publicKey)&hash=\(hashCode)") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, request, error) in
+            if let data = data, error == nil {
+                if let dataFromRequest = try? JSONDecoder().decode(Comics.self, from: data) {
                     completion(dataFromRequest)
                 } else {
                     completion(nil)

@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
         self.animationConstraint()
         RequestManager.shared.sendRequest { [weak self] characters in
             DispatchQueue.main.async {
-                guard let controller = self?.storyboard?.instantiateViewController(identifier: "TableViewController") as? HeroesListTableViewController else { return }
+                guard let controller = self?.storyboard?.instantiateViewController(identifier: "HeroesListViewController") as? HeroesListViewController else { return }
                 controller.characterArray = characters?.data?.results ?? []
                 self?.navigationController?.pushViewController(controller, animated: true)
             }

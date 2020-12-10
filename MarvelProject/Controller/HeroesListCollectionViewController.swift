@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class HeroesListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
     //    MARK: - let
     let itemsPerRow: CGFloat = 2
     let sectionInserts = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -31,7 +31,7 @@ class HeroesListCollectionViewController: UICollectionViewController, UICollecti
     //    MARK: - lifecycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // setup thr SearchController
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -57,28 +57,25 @@ class HeroesListCollectionViewController: UICollectionViewController, UICollecti
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if isFiltering {
             return filteredArray.count
         }
         return characterArray.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell else { return UICollectionViewCell()
-            
         }
         if isFiltering {
             cell.cellConfig(with: filteredArray[indexPath.row])
         } else {
             cell.cellConfig(with: characterArray[indexPath.row])
         }
-    
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
@@ -108,9 +105,7 @@ class HeroesListCollectionViewController: UICollectionViewController, UICollecti
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
-        
         if offsetY > contentHeight - scrollView.frame.size.height {
-            
             RequestManager.shared.offsetIndex += 20
             RequestManager.shared.sendRequest { [weak self] characters in
                 self?.characterArray.append(contentsOf: characters?.data?.results ?? [])
@@ -122,20 +117,20 @@ class HeroesListCollectionViewController: UICollectionViewController, UICollecti
     }
     
     private func filterContentAscending() {
-        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+        characterArray = characterArray.sorted {(character: Character, characterFiltered: Character) -> Bool in
             let chracter = character.name
             let characterFiltered = characterFiltered.name
             return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedAscending)
-        })
+        }
         collectionView.reloadData()
     }
     
     private func filterContentDescending() {
-        characterArray = characterArray.sorted(by: { (character: Character, characterFiltered: Character) -> Bool in
+        characterArray = characterArray.sorted {(character: Character, characterFiltered: Character) -> Bool in
             let chracter = character.name
             let characterFiltered = characterFiltered.name
             return (chracter?.localizedCaseInsensitiveCompare(characterFiltered ?? "") == .orderedDescending)
-        })
+        }
         collectionView.reloadData()
     }
 }
@@ -147,11 +142,9 @@ extension HeroesListCollectionViewController: UISearchResultsUpdating {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        
-        filteredArray = characterArray.filter({ (character: Character) -> Bool in
+        filteredArray = characterArray.filter {(character: Character) -> Bool in
             return (character.name?.lowercased().contains(searchText.lowercased()) ?? false)
-        })
+        }
         self.collectionView.reloadData()
     }
-    
 }

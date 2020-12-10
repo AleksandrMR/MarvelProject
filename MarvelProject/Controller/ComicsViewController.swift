@@ -16,7 +16,8 @@ class ComicsViewController: UIViewController {
     let heightForRowAt = CGFloat(100)
     
     //    MARK: - var
-    var characterComics: Character?
+    var characterComics = [ComicsResult?]()
+    var comicsPrice = [Price?]()
     
     //    MARK: - lifecycle funcs
     override func viewWillAppear(_ animated: Bool) {
@@ -29,15 +30,14 @@ class ComicsViewController: UIViewController {
 extension ComicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterComics?.comics?.returned ?? 0
+        return characterComics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCustomTableViewCell") as? SecondCustomTableViewCell else {
             return UITableViewCell()
         }
-        
-
+        cell.cellConfig(with: characterComics[indexPath.row])
         return cell
     }
     
